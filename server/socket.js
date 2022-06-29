@@ -39,19 +39,11 @@ wss.on( "connection", ws => {
         if( OBJ[`client`] != "HTML" ) {
 
             if ( !turtleClients.includes( ws ) ) { turtleClients.push(ws) }
-
-            //ws.send( [ "-1", `os.setComputuerLabel("${array[ random ]}`] )
             
             console.log( `Response: ${data}` )
 
             console.log( OBJ )
             wss.broadcastToHTML( JSON.stringify( OBJ[1] ) )
-
-            const jsonData = require('./names.json'); 
-            const array = isJson( "[ 'A', 'B' ]" )
-            const random = Math.floor( Math.random() * array.length )
-
-            console.log( array )
 
         }
 
