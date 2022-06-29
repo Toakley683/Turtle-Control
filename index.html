@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <script>
+
+            const ws = new WebSocket( "ws://localhost:1000" )
+
+            var wait = (ms) => {
+                const start = Date.now();
+                let now = start;
+                while (now - start < ms) {
+                now = Date.now();
+                }
+            }
+
+            let data;
+
+            ws.addEventListener( "message", async data => {
+
+                console.log( data.data )
+
+                data = data;
+
+                return data.data
+
+            })
+
+            function turtleSend( turtleID, val ) {
+                
+                const info = {
+                    client: `HTML`,
+                    id: `${turtleID}`,
+                    function: val
+                }
+                ws.send( JSON.stringify(info) )
+
+            }
+
+            ws.addEventListener( "open", () => {
+
+                turtleSend( -1, `print( "Connection from HTML" )` )
+
+            })
+
+
+
+        </script>
+
+    </head>
+
+    <body>
+
+
+        
+    </body>
+
+</html>
